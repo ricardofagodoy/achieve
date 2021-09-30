@@ -1,0 +1,30 @@
+{
+    "name": "Achieve",
+    "description": "Simple and useful time tracker for achievers.",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": ["storage", "activeTab", "scripting", "alarms", "background"],
+    "action": {
+      "default_popup": "popup/popup.html",
+      "default_icon": {
+        "16": "/images/icon-16.png",
+        "32": "/images/icon-32.png",
+        "64": "/images/icon-64.png",
+        "128": "/images/icon-128.png",
+        "256": "/images/icon-256.png",
+        "512": "/images/icon-512.png"
+      }
+    },
+    "options_page": "options/options.html",
+    "icons": {
+      "16": "/images/icon-16.png",
+        "32": "/images/icon-32.png",
+        "64": "/images/icon-64.png",
+        "128": "/images/icon-128.png",
+        "256": "/images/icon-256.png",
+        "512": "/images/icon-512.png"
+    }
+}
