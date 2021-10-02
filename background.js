@@ -1,10 +1,26 @@
-let color = '#3aa757';
-
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.set({ color });
-    console.log('Default background color set to %cgreen', `color: ${color}`);
+
+    chrome.storage.sync.clear()
+
+    chrome.storage.sync.set({
+        1633133335843: {
+            project: 'Achieve',
+            name: 'Build this extension!',
+            estimated: '2h',
+            spent: 0
+        }
+    })
+
+    console.log('Default task setup!')
 })
 
+// TODO: change it for message
+//chrome.storage.onChanged.addListener((changes) => {
+//    const taskChanges = changes?.tasks
+//    console.log(taskChanges)
+//})
+
+/*
 // Interval to update counter badge
 chrome.alarms.create('counter', {
     periodInMinutes: 0.01
@@ -27,3 +43,4 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
         chrome.storage.local.set({ counter });
     })
 })
+*/

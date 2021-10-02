@@ -10,6 +10,10 @@ body {
   vertical-align: middle;
 }
 
+.table td[name="action"], .table td[name="spent-row"] {
+  min-width: 8em;
+}
+
 .card-footer-item {
   font-size: 0.8rem;
   padding: 0.4rem;
