@@ -1,46 +1,31 @@
+const MANAGE_TASKS_MENU = 'MANAGE_TASKS_MENU'
+const REPORT_MENU = 'REPORT_MENU'
+
 chrome.runtime.onInstalled.addListener(() => {
 
-    chrome.storage.sync.clear()
-
-    chrome.storage.sync.set({
-        1633133335843: {
-            project: 'Achieve',
-            name: 'Build this extension!',
-            estimated: '2h',
-            spent: 0
-        }
+    // Create menus
+    chrome.contextMenus.create({
+        "id": MANAGE_TASKS_MENU,
+        "title": 'Manage tasks',
+        "contexts": ["action"]
     })
 
-    console.log('Default task setup!')
-})
-
-// TODO: change it for message
-//chrome.storage.onChanged.addListener((changes) => {
-//    const taskChanges = changes?.tasks
-//    console.log(taskChanges)
-//})
-
-/*
-// Interval to update counter badge
-chrome.alarms.create('counter', {
-    periodInMinutes: 0.01
-})
-
-chrome.alarms.onAlarm.addListener(function(alarm) {
-
-    // Read from persistent
-    chrome.storage.local.get(["counter"], ({ counter }) => {
-
-        if (!counter)
-            counter = 1
-
-        // Update badge
-        //chrome.action.setBadgeText({
-        //    text: '01:' + counter++
-        //})
-
-        // Save back to persistent
-        chrome.storage.local.set({ counter });
+    chrome.contextMenus.create({
+        "id": REPORT_MENU,
+        "title": 'View reports',
+        "contexts": ["action"]
     })
+
+    // Clean up
+    // chrome.storage.sync.clear()
 })
-*/
+
+// Menu clicks
+chrome.contextMenus.onClicked.addListener((info) => {
+
+    if (info.menuItemId == MANAGE_TASKS_MENU)
+        chrome.tabs.create({url: 'manage/manage.html'})
+
+    if (info.menuItemId == REPORT_MENU)
+        chrome.tabs.create({url: 'report/report.html'})
+})

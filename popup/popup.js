@@ -1,6 +1,19 @@
-var timers = {}
+/*
+  This code is just an example playing around with Chrome Extensions.
+  Note it may not be fancy or solid as it should ;-)
+*/
 
-const TICK_RATE = 1000
+const off_badge = {
+  text: "OFF",
+  color: "#898989"
+}
+
+const on_badge = {
+  text: "ON",
+  color: "#54B22A"
+}
+
+const timers = {}
 const stopButton = '<button class="button is-danger is-rounded">Stop</button>'
 const startButton = '<button class="button is-success is-rounded">Start</button>'
 
@@ -64,13 +77,15 @@ function startTimer(task) {
   // Persist to disk
   storeTask(task)
 
+  // Badge on
+  chrome.action.setBadgeText({text: on_badge.text})
+  chrome.action.setBadgeBackgroundColor({color: on_badge.color})
+
   // Visual clock ticking on screen
   timers[task.id] = setInterval(() => {
     const newTimeSpent = formatTimeSpent(task.spent + getAdjustedTimeSpent(task.start_time))
     $(`#${task.id} [name="spent"]`).text(newTimeSpent)
-  }, TICK_RATE)
-  
-  console.log('Timer started...')
+  }, 1000)
 }
 
 function stopTimer(task) {
@@ -84,38 +99,18 @@ function stopTimer(task) {
 
   // Kill visual timer
   clearInterval(timers[task.id])
+  delete timers[task.id]
 
-  console.log('Timer stopped...')
+  // Badge off
+  if (Object.keys(timers).length == 0) {
+    chrome.action.setBadgeText({text: off_badge.text})
+    chrome.action.setBadgeBackgroundColor({color: off_badge.color})
+  }
 }
 
 function getAdjustedTimeSpent(start_time) {
   return Math.round((new Date().getTime() - start_time) / 1000)
 }
 
-function formatTimeSpent(seconds) {
-  
-  seconds = seconds + 3600
-
-  const hours = parseInt(seconds/3600)
-  const minutes = parseInt(seconds%3600/60)
-  const leftSeconds = parseInt(seconds%60)
-
-  let result = []
-
-  if (hours > 0)
-    result.push(`${hours}h`)
-
-  if (minutes > 0)
-    result.push(`${minutes}m`)
-
-  if (leftSeconds > 0)
-    result.push(`${leftSeconds}s`)
-
-  return result.join(' ')
-}
-
-function storeTask(task) {
-  const store_task = {}
-  store_task[task.id] = task
-  chrome.storage.sync.set(store_task)
-}
+$('#report').click(() => create_tab('../report/report.html'))
+$('#manage').click(() => create_tab('../manage/manage.html'))

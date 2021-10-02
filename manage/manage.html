@@ -3,7 +3,7 @@
 
   <head>
     <link rel="stylesheet" href="../thirdparty/bulma.min.css">
-    <link rel="stylesheet" href="popup.css">
+    <link rel="stylesheet" href="manage.css">
     <script src="../thirdparty/jquery-3.6.0.min.js"></script>
   </head>
 
@@ -16,29 +16,31 @@
 
     <button id="close-div" class="delete is-medium"></button>
 
+    </nav>
+
     <table class="table">
       <thead>
         <tr>
           <th>Project</th>
           <th>Task</th>
           <th>Estimated</th>
-          <th>Spent</th>
           <th>Action</th>
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td><input id="new_project" type="text"/></td>
+          <td><input id="new_name" type="text"/></td>
+          <td><input id="new_estimated" type="text"/></td>
+          <td>
+            <button id="create" class="button is-success is-rounded">Create</button>
+          </td>
+        </tr>
       </tbody>
     </table>
 
-    <div class="card fixed">
-      <footer class="card-footer">
-        <button id="manage" class="card-footer-item button is-info">Manage tasks</button>
-        <button id="report" class="card-footer-item button is-info">Report</button>
-      </footer>
-    </div>
-
     <script src="../shared/shared.js"></script>
-    <script src="popup.js"></script>
+    <script src="manage.js"></script>
   </body>
 
 </html>
