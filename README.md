@@ -1,12 +1,18 @@
 # Achieve
 
-## Achieve your goals with this simple yet efficient pomodoro-style task time tracker extension.
+<div align="center">
+
+### Achieve your goals with this simple yet efficient pomodoro-style task time tracker extension.
 
 <br/>
 
-### Download it here: https://test.com
+### **Get as free Chrome Extension here**: https://test.com
 
 <br/>
 <br/>
 
-![logo](images/icon-256.png)
+<img src="https://github.com/ricardofagodoy/achieve/raw/master/images/example.png">
+
+<br/>
+
+<img src="https://github.com/ricardofagodoy/achieve/raw/master/images/icon-256.png">
