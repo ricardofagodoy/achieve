@@ -47,6 +47,11 @@ $('#create').click(() => {
     return
   }
 
+  // Clear fields
+  $('#new_project').val('')
+  $('#new_name').val('')
+  $('#new_estimated').val('')
+
   // Creates new task
   createdTask = createTask(project, name, estimated)
   

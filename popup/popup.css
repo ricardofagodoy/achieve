@@ -4,6 +4,7 @@ body {
 
 .table {
   text-align: center;
+  min-width: 40rem;
 }
 
 .table td {

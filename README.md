@@ -17,4 +17,8 @@
 
 <img src="https://github.com/ricardofagodoy/achieve/raw/master/images/example.png">
 
+<br/>
+
+<img src="https://github.com/ricardofagodoy/achieve/raw/master/images/example2.png">
+
 </div>
