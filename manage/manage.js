@@ -18,7 +18,7 @@ function loadTasks(tasks) {
     let row = `<tr id="${task.id}">
                 <td>${task.project}</td>
                 <td>${task.name}</td>
-                <td>${task.estimated}</td>
+                <td>${formatTimeSpent(task.estimated)}</td>
                 <td name="action">
                   <button class="button is-danger is-rounded">Delete</button>
                 </td>
@@ -53,7 +53,7 @@ $('#create').click(() => {
   $('#new_estimated').val('')
 
   // Creates new task
-  createdTask = createTask(project, name, estimated)
+  createdTask = createTask(project, name, estimatedToSeconds(estimated))
   
   // Adds to list
   loadTasks(createdTask)

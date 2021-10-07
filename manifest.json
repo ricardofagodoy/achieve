@@ -1,7 +1,7 @@
 {
-    "name": "Achieve",
+    "name": "Achieve - Simplest time tracker ever",
     "description": "Simple and useful time tracker for achievers.",
-    "version": "1.0",
+    "version": "0.0.1",
     "manifest_version": 3,
     "background": {
       "service_worker": "background.js"

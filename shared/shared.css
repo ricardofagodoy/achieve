@@ -1,0 +1,42 @@
+body {
+    margin: 1em 1.5em;
+  }
+  
+  .table {
+    margin: 0 auto;
+    text-align: center;
+    min-width: 40rem;
+  }
+
+  .table input[type="text"] {
+    text-align: center;
+  }
+  
+  .table td {
+    vertical-align: middle;
+  }
+  
+  .table td[name="action"], .table td[name="spent-row"] {
+    min-width: 8em;
+  }
+  
+  .card-footer-item {
+    font-size: 0.8rem;
+    padding: 0.4rem;
+  }
+  
+  #nav-title {
+    text-align: center;
+    font-size: 2em;
+    margin: 0.8em 0;
+  }
+  
+  #nav-title img {
+    max-width: 2em;
+  }
+  
+  #close-div {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+  }

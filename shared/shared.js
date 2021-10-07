@@ -45,6 +45,24 @@ function storeTask(task) {
   
     return result.join(' ')
   }
+
+  function estimatedToSeconds(estimated) {
+
+    // Remove empty spaces
+    estimated = estimated.replace(/\s+/g, '')
+  
+    let index = 0
+    const tokens = {}
+  
+    for (let i = 0; i < estimated.length; i++) {
+      if (isNaN(parseInt(estimated[i]))) {
+        tokens[estimated[i]] = parseInt(estimated.substr(index, i))
+        index = i + 1
+      }
+    }
+  
+    return (((tokens['h'] || 0) * 3600) + ((tokens['m'] || 0) * 60) + (tokens['s'] || 0))
+  }
   
   function create_tab(url) {
     chrome.tabs.create({url})

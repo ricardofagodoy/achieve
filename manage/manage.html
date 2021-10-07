@@ -3,7 +3,7 @@
 
   <head>
     <link rel="stylesheet" href="../thirdparty/bulma.min.css">
-    <link rel="stylesheet" href="manage.css">
+    <link rel="stylesheet" href="../shared/shared.css">
     <script src="../thirdparty/jquery-3.6.0.min.js"></script>
   </head>
 
@@ -29,15 +29,21 @@
       </thead>
       <tbody>
         <tr>
-          <td><input id="new_project" class="input is-small is-rounded" type="text" placeholder="Project"/></td>
-          <td><input id="new_name" class="input is-small is-rounded" type="text" placeholder="Name"/></td>
-          <td><input id="new_estimated" class="input is-small is-rounded" type="text" placeholder="Estimated"/></td>
+          <td><input id="new_project" class="input is-small is-rounded" maxlength="50" type="text" placeholder="Project 01"/></td>
+          <td><input id="new_name" class="input is-small is-rounded" maxlength="80" type="text" placeholder="My nice task"/></td>
+          <td><input id="new_estimated" class="input is-small is-rounded" maxlength="15" type="text" placeholder="2h 35m"/></td>
           <td>
             <button id="create" class="button is-success is-rounded">Create</button>
           </td>
         </tr>
       </tbody>
     </table>
+
+    <div class="card fixed">
+      <footer class="card-footer">
+        <a class="card-footer-item button is-info" href="../popup/popup.html">Go back</a>
+      </footer>
+    </div>
 
     <script src="../shared/shared.js"></script>
     <script src="manage.js"></script>

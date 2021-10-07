@@ -38,7 +38,7 @@ function loadTasks(tasks) {
     let row = `<tr id="${task.id}">
                 <td>${task.project}</td>
                 <td>${task.name}</td>
-                <td>${task.estimated}</td>
+                <td>${formatTimeSpent(task.estimated)}</td>
                 <td name="spent-row">
                   <span name="spent">${formatTimeSpent(task.spent)}</span>
                 </td>
@@ -113,4 +113,3 @@ function getAdjustedTimeSpent(start_time) {
 }
 
 $('#report').click(() => create_tab('../report/report.html'))
-$('#manage').click(() => create_tab('../manage/manage.html'))
