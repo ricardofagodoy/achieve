@@ -1,0 +1,30 @@
+body {
+  margin: 1em 1.5em;
+}
+  
+#nav-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 1em 0;
+}
+  
+#nav-title img {
+  max-width: 2em;
+}
+  
+.content {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 60%;
+  font-size: 3em;
+}
+
+.button {
+  font-size: 0.5em;
+}
+
+#close-div {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}

@@ -4,9 +4,7 @@
 */
 
 // Read all items from storage
-chrome.storage.sync.get(null, (tasks) => {
-  loadTasks(tasks)
-})
+loadAllTasks(loadTasks)
 
 function loadTasks(tasks) {
 
@@ -18,7 +16,7 @@ function loadTasks(tasks) {
     let row = `<tr id="${task.id}">
                 <td>${task.project}</td>
                 <td>${task.name}</td>
-                <td>${task.estimated}</td>
+                <td>${formatTimeSpent(task.estimated)}</td>
                 <td name="spent-row">
                   <span name="spent">${formatTimeSpent(task.spent)}</span>
                 </td>
@@ -28,3 +26,6 @@ function loadTasks(tasks) {
     $("table tbody").append(row)
   }
 }
+
+// Top right button to close current window to all screens
+$('#close-div').click(() => window.close())

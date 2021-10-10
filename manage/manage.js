@@ -4,16 +4,12 @@
 */
 
 // Read all items from storage
-chrome.storage.sync.get(null, (tasks) => {
-  loadTasks(tasks)
-})
+loadAllTasks(renderTasks)
 
-function loadTasks(tasks) {
+function renderTasks(tasks) {
 
   // Populate list with each task
-  for (const [id, details] of Object.entries(tasks)) {
-
-    const task = {id, ...details}
+  for (const task of tasks) {
 
     let row = `<tr id="${task.id}">
                 <td>${task.project}</td>
@@ -36,7 +32,15 @@ function loadTasks(tasks) {
 }
 
 // Create new task button
-$('#create').click(() => {
+$('#create').click(() => createNewTask)
+
+// Also creates on pressing Enter
+$(document).keypress(e => {
+  if (e.keyCode === 13)
+    createNewTask()
+})
+
+function createNewTask() {
 
   const project = $('#new_project').val()
   const name = $('#new_name').val()
@@ -56,5 +60,8 @@ $('#create').click(() => {
   createdTask = createTask(project, name, estimatedToSeconds(estimated))
   
   // Adds to list
-  loadTasks(createdTask)
-})
+  renderTasks([createdTask])
+}
+
+// Top right button to close current window to all screens
+$('#close-div').click(() => window.close())

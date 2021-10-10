@@ -18,16 +18,12 @@ const stopButton = '<button class="button is-danger is-rounded">Stop</button>'
 const startButton = '<button class="button is-success is-rounded">Start</button>'
 
 // Read all items from storage
-chrome.storage.sync.get(null, (tasks) => {
-  loadTasks(tasks)
-})
+loadAllTasks(renderTasks)
 
-function loadTasks(tasks) {
+function renderTasks(tasks) {
 
   // Populate list with each task
-  for (const [id, details] of Object.entries(tasks)) {
-
-    const task = {id, ...details}
+  for (const task of tasks) {
 
     // Start timer if it should be running already
     if (task.start_time) {
@@ -77,6 +73,12 @@ function startTimer(task) {
   // Persist to disk
   storeTask(task)
 
+  // Warn background about it
+  chrome.runtime.sendMessage({
+    running: true,
+    task: task
+  })
+
   // Badge on
   chrome.action.setBadgeText({text: on_badge.text})
   chrome.action.setBadgeBackgroundColor({color: on_badge.color})
@@ -97,6 +99,12 @@ function stopTimer(task) {
   // Persist to disk
   storeTask(task)
 
+  // Warn background about it
+  chrome.runtime.sendMessage({
+    running: false,
+    task: task
+  })
+
   // Kill visual timer
   clearInterval(timers[task.id])
   delete timers[task.id]
@@ -108,8 +116,8 @@ function stopTimer(task) {
   }
 }
 
-function getAdjustedTimeSpent(start_time) {
-  return Math.round((new Date().getTime() - start_time) / 1000)
-}
+// Open report tab
+$('#report').click(() => chrome.tabs.create({url: '../report/report.html'}))
 
-$('#report').click(() => create_tab('../report/report.html'))
+// Top right button to close current window
+$('#close-div').click(() => window.close())
