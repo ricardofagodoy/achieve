@@ -1,0 +1,1 @@
+$('#close-div').click(() => window.close())

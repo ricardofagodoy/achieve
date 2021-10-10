@@ -32,7 +32,7 @@ function renderTasks(tasks) {
 }
 
 // Create new task button
-$('#create').click(() => createNewTask)
+$('#create').click(createNewTask)
 
 // Also creates on pressing Enter
 $(document).keypress(e => {
